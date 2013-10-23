@@ -1,6 +1,6 @@
 (defproject fortress-sample "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Sample fortress webapp"
+  :url "http://github.com/iamedu/fortress-sample"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.5.1"]
@@ -21,6 +21,9 @@
                  ;; Clojure libraries
                  [korma "0.3.0-RC6"]
                  [com.novemberain/pantomime "2.0.0"]
+                 [crypto-random "1.1.0"
+                  :exclusions [org.clojure/clojure
+                               commons-codec]]
                  [clj-crypto "1.0.0"
                   :exclusions [org.clojure/clojure
                                bouncycastle/bcprov-jdk16]]
@@ -28,7 +31,8 @@
                  [ch.qos.logback/logback-core "1.0.13"]
                  [ch.qos.logback/logback-classic "1.0.13"]
                  [org.bouncycastle/bcpkix-jdk15on "1.49"]
-                 [org.bouncycastle/bcprov-jdk15on "1.49"]] 
+                 [org.bouncycastle/bcprov-jdk15on "1.49"]
+                 [commons-codec "1.8"]]
   :main ^:skip-aot fortress-sample.core
   :target-path "target/%s"
   :jvm-opts  ["-Xbootclasspath/p:lib/npn-boot-1.1.6.v20130911.jar"]
