@@ -21,9 +21,14 @@
                  ;; Clojure libraries
                  [korma "0.3.0-RC6"]
                  [com.novemberain/pantomime "2.0.0"]
+                 [clj-crypto "1.0.0"
+                  :exclusions [org.clojure/clojure
+                               bouncycastle/bcprov-jdk16]]
                  ;; Java libraries
                  [ch.qos.logback/logback-core "1.0.13"]
-                 [ch.qos.logback/logback-classic "1.0.13"]]
+                 [ch.qos.logback/logback-classic "1.0.13"]
+                 [org.bouncycastle/bcpkix-jdk15on "1.49"]
+                 [org.bouncycastle/bcprov-jdk15on "1.49"]] 
   :main ^:skip-aot fortress-sample.core
   :target-path "target/%s"
   :jvm-opts  ["-Xbootclasspath/p:lib/npn-boot-1.1.6.v20130911.jar"]
