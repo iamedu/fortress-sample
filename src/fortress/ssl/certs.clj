@@ -15,9 +15,9 @@
               parser (PEMParser. reader)]
     (.readObject parser)))
 
-(defn decrypt-pem-key [encrypted password]
+(defn decrypt-pem-key [encrypted password-chars]
   (let [decryptor-builder (JcePEMDecryptorProviderBuilder.)
-        decryptor (.build decryptor-builder (.toCharArray password))]
+        decryptor (.build decryptor-builder password-chars)]
     (.decryptKeyPair encrypted decryptor)))
 
 (defn gen-key-pair [pem-key]
@@ -33,10 +33,9 @@
     (Security/addProvider (BouncyCastleProvider.)))
   (.. (JcaX509CertificateConverter.) (setProvider "BC") (getCertificate pem-cert)))
 
-(defn gen-key-store [key-pair cert passphrase]
+(defn gen-key-store [key-pair cert passphrase-chars]
   (let [key-store (KeyStore/getInstance "JKS")
-        private-key (.getPrivate key-pair)
-        passphrase-chars (.toCharArray passphrase)]
+        private-key (.getPrivate key-pair)]
     (.load key-store nil)
     (.setKeyEntry key-store "1" private-key passphrase-chars (into-array [cert]))
     key-store))

@@ -13,4 +13,4 @@
   "I don't do a whole lot ... yet."
   [& args]
   (log/info "Hola mundo")
-  (run-fortress app :port 8080))
+  (run-fortress app))
